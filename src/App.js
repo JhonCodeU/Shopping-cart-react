@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { NavLink, Route, Routes } from 'react-router-dom'
 import Home from './components/Home'
@@ -6,8 +6,23 @@ import Blog from './components/Blog'
 import Store from './components/Store'
 import Error404 from './components/Error404'
 import products from './data/products'
+import Cart from './components/Cart'
 
 const App = () => {
+
+  const [cart, setCart] = useState([])
+
+  const addToCart = (product) => {
+    const productInCart = cart.find((item) => item.id === product.id)
+    if (productInCart) {
+      setCart(
+        cart.map((item) => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item)
+      )
+    } else {
+      setCart([...cart, { ...product, quantity: 1 }])
+    }
+  }
+
   return (
     <Contenedor>
       <Menu>
@@ -21,12 +36,15 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/store" element={
-            <Store products={products} />
+            <Store
+              products={products}
+              addToCart={addToCart}
+            />
           } />
         </Routes>
       </main>
       <aside>
-        <h2>Sidebar</h2>
+        <Cart cart={cart} />
       </aside>
     </Contenedor>
   );
