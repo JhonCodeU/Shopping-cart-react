@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { NavLink, Route, Routes } from 'react-router-dom'
 import Home from './components/Home'
@@ -11,18 +11,16 @@ import storeReducer from './reducers/storeReducer'
 
 const App = () => {
 
-  const [cart, setCart] = useState([])
-
-  const addToCart = (product) => {
-    const productInCart = cart.find((item) => item.id === product.id)
-    if (productInCart) {
-      setCart(
-        cart.map((item) => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item)
-      )
-    } else {
-      setCart([...cart, { ...product, quantity: 1 }])
-    }
-  }
+  /*   const addToCart = (product) => {
+      const productInCart = cart.find((item) => item.id === product.id)
+      if (productInCart) {
+        setCart(
+          cart.map((item) => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item)
+        )
+      } else {
+        setCart([...cart, { ...product, quantity: 1 }])
+      }
+    } */
 
 
   return (
@@ -38,15 +36,11 @@ const App = () => {
             <Route path='*' element={<Error404 />} />
             <Route path="/" element={<Home />} />
             <Route path="/blog" element={<Blog />} />
-            <Route path="/store" element={
-              <Store
-                addToCart={addToCart}
-              />
-            } />
+            <Route path="/store" element={<Store />} />
           </Routes>
         </main>
         <aside>
-          <Cart cart={cart} />
+          <Cart />
         </aside>
       </Contenedor>
     </Provider>

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
 
 const Cart = ({ cart }) => {
 
@@ -47,4 +48,4 @@ const Total = styled.p`
   color: green;
 `;
 
-export default Cart
+export default connect((state) => ({ cart: state.cart }))(Cart)

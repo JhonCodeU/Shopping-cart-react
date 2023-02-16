@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 
 const Products = ({ products, addToCart }) => {
 
-  console.log(products);
-
   return (
     <div>
       <h3>Products</h3>
