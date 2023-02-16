@@ -6,6 +6,7 @@ const Cart = ({ cart }) => {
   return (
     <Contenedor>
       <h2>Shopping Cart</h2>
+      <Total>Total: ${cart.reduce((acc, item) => acc + item.price * item.quantity, 0)}</Total>
       {cart.length > 0 ?
         cart.map((cartItem) => (
           <Product key={cartItem.id}>
@@ -17,7 +18,7 @@ const Cart = ({ cart }) => {
         :
         <p>There are no products in the cart</p>
       }
-    </Contenedor>
+    </Contenedor >
   );
 }
 
@@ -38,6 +39,12 @@ const ProductName = styled.p`
   font-weight: 600;
   font-size: 16px;
   color: #000;
+`;
+
+const Total = styled.p`
+  font-weight: 600;
+  font-size: 16px;
+  color: green;
 `;
 
 export default Cart
