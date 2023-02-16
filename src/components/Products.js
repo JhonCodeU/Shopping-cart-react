@@ -1,7 +1,10 @@
 import React from 'react'
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 const Products = ({ products, addToCart }) => {
+
+  console.log(products);
 
   return (
     <div>
@@ -61,4 +64,21 @@ const Boton = styled.button`
     }
 `;
 
-export default Products;
+const mapStateToProps = (state) => {
+  return {
+    products: state.product
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addToCart (product) {
+      dispatch({
+        type: 'ADD_TO_CART',
+        product
+      })
+    }
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products);

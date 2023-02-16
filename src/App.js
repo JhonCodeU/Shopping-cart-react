@@ -5,7 +5,6 @@ import Home from './components/Home'
 import Blog from './components/Blog'
 import Store from './components/Store'
 import Error404 from './components/Error404'
-import products from './data/products'
 import Cart from './components/Cart'
 import { Provider } from 'react-redux'
 import storeReducer from './reducers/storeReducer'
@@ -25,7 +24,6 @@ const App = () => {
     }
   }
 
-  console.log(storeReducer.getState());
 
   return (
     <Provider store={storeReducer}>
@@ -42,7 +40,6 @@ const App = () => {
             <Route path="/blog" element={<Blog />} />
             <Route path="/store" element={
               <Store
-                products={products}
                 addToCart={addToCart}
               />
             } />

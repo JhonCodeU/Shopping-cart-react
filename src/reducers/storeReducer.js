@@ -1,13 +1,10 @@
 import { createStore } from 'redux';
+import products from '../data/products';
 
 const initialState = {
-  product: [
-    { id: 1, name: 'product A', price: 100 },
-    { id: 2, name: 'product B', price: 200 },
-    { id: 3, name: 'product C', price: 300 }
-  ],
+  product: products,
 
-  cart: [1, 2, 3]
+  cart: []
 }
 
 const reducer = (state = initialState, action) => {
