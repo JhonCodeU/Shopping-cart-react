@@ -11,18 +11,6 @@ import storeReducer from './reducers/storeReducer'
 
 const App = () => {
 
-  /*   const addToCart = (product) => {
-      const productInCart = cart.find((item) => item.id === product.id)
-      if (productInCart) {
-        setCart(
-          cart.map((item) => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item)
-        )
-      } else {
-        setCart([...cart, { ...product, quantity: 1 }])
-      }
-    } */
-
-
   return (
     <Provider store={storeReducer}>
       <Contenedor>
